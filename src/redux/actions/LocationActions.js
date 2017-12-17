@@ -1,16 +1,36 @@
 import { actionTypes } from "./actionTypes";
 
-export const logIn = {
-  geolocationStart: payload => ({
-    type: actionTypes.GEOLOCATION_START,
+export const weatherData = {
+  weatherDataStart: payload => ({
+    type: actionTypes.FETCH_WEATHER_DATA_START,
     payload
   }),
-  geolocationError: payload => ({
-    type: actionTypes.GEOLOCATION_ERROR,
+  weatherDataError: payload => ({
+    type: actionTypes.FETCH_WEATHER_DATA_ERROR,
     payload
   }),
-  geolocationSuccess: payload => ({
-    type: actionTypes.GEOLOCATION_SUCCESS,
+  weatherDataSuccess: payload => ({
+    type: actionTypes.FETCH_WEATHER_DATA_SUCCESS,
     payload
   })
 };
+
+export const getCurrentLocationSuccess = data => {
+	return {
+		type: actionTypes.GET_GEOLOCATION_DATA_SUCCESS,
+		payload: data
+	}
+}
+
+export const getCurrentLocationError = error => {
+	return {
+		type: actionTypes.GET_GEOLOCATION_DATA_ERROR,
+		payload: error
+	}
+}
+
+export const getCurrentLocationStart = () => {
+  return {
+    type: actionTypes.GET_GEOLOCATION_DATA_START
+  }
+}

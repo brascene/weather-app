@@ -1,31 +1,27 @@
 import { actionTypes } from "./../actions/actionTypes";
 
 export const initialState = {
-  locationData: null,
+  data: null,
   loading: false,
   success: false,
-  error: {}
+  error: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.GET_GEOLOCATION_DATA_START:
+    case actionTypes.GEOLOCATION_START:
       return {
         ...state,
         loading: true
-      }
-    case actionTypes.GET_GEOLOCATION_DATA_SUCCESS:
-      localStorage.setItem("userLocation", JSON.stringify({
-        lat: action.payload.latitude,
-        lon: action.payload.longitude
-      }))
+      };
+    case actionTypes.GEOLOCATION_SUCCESS:
       return {
         ...state,
-        locationData: action.payload,
+        data: action.payload,
         success: true,
         loading: false
       };
-    case actionTypes.GET_GEOLOCATION_DATA_ERROR:
+    case actionTypes.GEOLOCATION_ERROR:
       return {
         ...state,
         error: action.payload,
