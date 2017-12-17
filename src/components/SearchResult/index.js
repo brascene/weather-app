@@ -2,7 +2,7 @@ import React from "react";
 import { Input, Label, Button } from "semantic-ui-react";
 import "./style.css";
 
-class Search extends React.Component {
+class SearchResult extends React.Component {
   state = {
     searchStarted: false
   };
@@ -20,10 +20,6 @@ class Search extends React.Component {
     } else {
       alert("Geolocation is not supported by this browser.");
     }
-  };
-
-  _handleSearchByCity = () => {
-    this.props.history.push("/result");
   };
 
   render() {
@@ -45,9 +41,9 @@ class Search extends React.Component {
             <br />
             <br />
             <Button
-              onClick={this._handleSearchByCity}
+              onClick={() => console.log("Search by city")}
               className="goButton"
-              content="Go"
+              content="Dobrodosao na details"
             />
             <div style={{ height: 260 }}>
               <Label
@@ -77,4 +73,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+export default SearchResult;
