@@ -1,0 +1,41 @@
+#container {
+  width: 100%;
+  text-align: center;
+}
+
+#left {
+  float: left;
+  width: 200px;
+  height: 0px;
+  background: #e96056;
+}
+
+.search-container {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  min-width: 300px;
+  color: white;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+
+/* .search {
+  border-bottom: 2px solid black;
+} */
+
+#center {
+  display: inline-block;
+  margin: 0 auto;
+  width: 71%;
+  height: 100%;
+  background: #e96056;
+}
+
+#right {
+  float: right;
+  width: 200px;
+  height: 0px;
+  background: #e96056;
+}
