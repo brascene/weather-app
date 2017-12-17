@@ -7,10 +7,6 @@ class SearchResult extends React.Component {
     searchStarted: false
   };
 
-  componentDidMount() {
-    console.log("Props: ", this.props);
-  }
-
   _handleGetMyLocation = () => {
     if (navigator.geolocation) {
       const loc = navigator.geolocation.getCurrentPosition((success, err) => {
