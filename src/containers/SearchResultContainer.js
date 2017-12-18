@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import SearchResult from "../components/SearchResult";
+import SearchResult from '../components/SearchResult';
 
-class SearchResultContainer extends Component {
+class SearchResultContainer extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>

@@ -1,1 +1,1 @@
-export * from "./locationFunctions";
+export * from './locationFunctions';

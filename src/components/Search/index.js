@@ -1,19 +1,25 @@
-import React from "react";
-import { Input, Label, Button } from "semantic-ui-react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import "./style.css";
+import React from 'react';
+import { Input, Label, Button } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import './style.css';
 
 import {
   getCurrentLocationSuccess,
   getCurrentLocationError,
-  getCurrentLocationStart
-} from "../../redux/actions";
+  getCurrentLocationStart,
+} from '../../redux/actions';
 
 class Search extends React.Component {
   state = {
-    getMyLocationLoader: false
+    getMyLocationLoader: false,
+    city: '',
   };
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.weatherData !== {}) {
+      this.props.history.push('/result');
+    }
+  }
 
   _handleGetMyLocation = () => {
     this.setState({ getMyLocationLoader: true });
@@ -22,36 +28,39 @@ class Search extends React.Component {
       const options = {
         enableHighAccuracy: true,
         timeout: 5000,
-        maximumAge: 0
+        maximumAge: 0,
       };
 
-      const success = pos => {
-        var crd = pos.coords;
+      const success = (pos) => {
+        const crd = pos.coords;
         this.props.getCurrentLocationSuccess({
           latitude: crd.latitude,
-          longitude: crd.longitude
+          longitude: crd.longitude,
         });
         this.setState({ getMyLocationLoader: false });
-        this.props.history.push("/result");     
+        this.props.getWeatherDataCoord({
+          lat: crd.latitude,
+          lon: crd.longitude,
+        });
       };
 
-      const error = err => {
+      const error = (err) => {
         this.props.getCurrentLocationError({
           code: err.code,
-          message: err.message
+          message: err.message,
         });
-        this.setState({ getMyLocationLoader: false });        
+        this.setState({ getMyLocationLoader: false });
       };
 
       navigator.geolocation.getCurrentPosition(success, error, options);
     } else {
-      alert("Geolocation is not supported by this browser.");
+      alert('Geolocation is not supported by this browser.');
     }
   };
 
   _handleSearchByCity = () => {
-    // this.props.history.push("/result");
-    this.props.getWeatherData();
+    const { city } = this.state;
+    this.props.getWeatherData(city);
   };
 
   render() {
@@ -65,10 +74,11 @@ class Search extends React.Component {
             <div style={{ height: 260 }} />
             <Input
               className="search"
-              style={{ width: "70%", minWidth: 300 }}
+              style={{ width: '70%', minWidth: 300 }}
               icon="search"
               placeholder="Enter the city name visea"
               size="big"
+              onChange={e => this.setState({ city: e.target.value })}
             />
             <br />
             <br />
@@ -80,16 +90,16 @@ class Search extends React.Component {
             <div style={{ height: 260 }}>
               <Label
                 style={{
-                  backgroundColor: "white",
+                  backgroundColor: 'white',
                   fontSize: 16,
-                  fontWeight: "200"
+                  fontWeight: '200',
                 }}
               >
                 or
-              </Label>{" "}
+              </Label>{' '}
               <br />
               <Button
-                style={{ backgroundColor: "white" }}
+                style={{ backgroundColor: 'white' }}
                 loading={getMyLocationLoader}
                 content="use my current location"
                 onClick={this._handleGetMyLocation}
@@ -105,14 +115,25 @@ class Search extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return {
+    weatherDataSuccess: state.weather.success,
+    weatherData: state.weather.data,
+  };
+}
+
 Search.propTypes = {
-  getCurrentLocationError: PropTypes.func,
-  getCurrentLocationStart: PropTypes.func,
-  getCurrentLocationSuccess: PropTypes.func
+  getCurrentLocationError: PropTypes.func.isRequired,
+  getCurrentLocationStart: PropTypes.func.isRequired,
+  getCurrentLocationSuccess: PropTypes.func.isRequired,
+  getWeatherData: PropTypes.func.isRequired,
+  weatherData: PropTypes.object,
+  getWeatherDataCoord: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };
 
-export default connect(null, {
+export default connect(mapStateToProps, {
   getCurrentLocationError,
   getCurrentLocationStart,
-  getCurrentLocationSuccess
+  getCurrentLocationSuccess,
 })(Search);

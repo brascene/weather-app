@@ -1,0 +1,167 @@
+export default {
+  city: {
+    id: 3191281,
+    name: 'Sarajevo',
+    coord: { lon: 18.3867, lat: 43.852 },
+    country: 'BA',
+    population: 696731,
+  },
+  cod: '200',
+  message: 2.0351151,
+  cnt: 7,
+  list: [
+    {
+      dt: 1513504800,
+      temp: {
+        day: 273.15,
+        min: 272.47,
+        max: 273.15,
+        night: 272.47,
+        eve: 273.15,
+        morn: 273.15,
+      },
+      pressure: 911.76,
+      humidity: 81,
+      weather: [
+        {
+          id: 600, main: 'Snow', description: 'light snow', icon: '13d',
+        },
+      ],
+      speed: 1.06,
+      deg: 4,
+      clouds: 88,
+      snow: 0.48,
+    },
+    {
+      dt: 1513591200,
+      temp: {
+        day: 269.96,
+        min: 266.33,
+        max: 270.31,
+        night: 266.33,
+        eve: 268.98,
+        morn: 270.31,
+      },
+      pressure: 913.28,
+      humidity: 79,
+      weather: [
+        {
+          id: 600, main: 'Snow', description: 'light snow', icon: '13d',
+        },
+      ],
+      speed: 1.33,
+      deg: 6,
+      clouds: 80,
+      snow: 1.41,
+    },
+    {
+      dt: 1513677600,
+      temp: {
+        day: 267.74,
+        min: 263.99,
+        max: 268.72,
+        night: 263.99,
+        eve: 267.92,
+        morn: 267.07,
+      },
+      pressure: 919.45,
+      humidity: 76,
+      weather: [
+        {
+          id: 600, main: 'Snow', description: 'light snow', icon: '13d',
+        },
+      ],
+      speed: 1.25,
+      deg: 327,
+      clouds: 76,
+      snow: 0.44,
+    },
+    {
+      dt: 1513764000,
+      temp: {
+        day: 264.92,
+        min: 258.17,
+        max: 268.15,
+        night: 258.93,
+        eve: 265.9,
+        morn: 259.51,
+      },
+      pressure: 924.71,
+      humidity: 81,
+      weather: [
+        {
+          id: 800, main: 'Clear', description: 'sky is clear', icon: '01d',
+        },
+      ],
+      speed: 1.06,
+      deg: 26,
+      clouds: 8,
+      snow: 0.01,
+    },
+    {
+      dt: 1513850400,
+      temp: {
+        day: 269.14,
+        min: 257.38,
+        max: 269.14,
+        night: 257.38,
+        eve: 260.4,
+        morn: 260.26,
+      },
+      pressure: 953.71,
+      humidity: 0,
+      weather: [
+        {
+          id: 800, main: 'Clear', description: 'sky is clear', icon: '01d',
+        },
+      ],
+      speed: 0.3,
+      deg: 335,
+      clouds: 0,
+    },
+    {
+      dt: 1513936800,
+      temp: {
+        day: 271.43,
+        min: 257.41,
+        max: 271.43,
+        night: 266.67,
+        eve: 267.94,
+        morn: 257.41,
+      },
+      pressure: 942.04,
+      humidity: 0,
+      weather: [
+        {
+          id: 600, main: 'Snow', description: 'light snow', icon: '13d',
+        },
+      ],
+      speed: 0.42,
+      deg: 129,
+      clouds: 44,
+      snow: 0.33,
+    },
+    {
+      dt: 1514023200,
+      temp: {
+        day: 274.6,
+        min: 260.91,
+        max: 274.6,
+        night: 261.88,
+        eve: 266.9,
+        morn: 260.91,
+      },
+      pressure: 930.86,
+      humidity: 0,
+      weather: [
+        {
+          id: 600, main: 'Snow', description: 'light snow', icon: '13d',
+        },
+      ],
+      speed: 0.76,
+      deg: 249,
+      clouds: 20,
+      snow: 0.34,
+    },
+  ],
+};

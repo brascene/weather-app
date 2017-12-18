@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import { Route, Switch, withRouter } from "react-router-dom";
-import { ConnectedRouter } from "react-router-redux";
-import { Provider } from "react-redux";
-import createHistory from "history/createBrowserHistory";
+import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
+import { Provider } from 'react-redux';
+import createHistory from 'history/createBrowserHistory';
 
-import SearchLocation from "../containers/SearchContainer";
-import SearchResultContainer from "../containers/SearchResultContainer";
-import store from "../redux";
+import SearchLocation from '../containers/SearchContainer';
+import SearchResultContainer from '../containers/SearchResultContainer';
+import store from '../redux';
 
 const history = createHistory();
 
-class Routes extends Component {
+class Routes extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <Provider store={store}>

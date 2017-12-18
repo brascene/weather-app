@@ -1,31 +1,32 @@
-import { actionTypes } from "./../actions/actionTypes";
+import { actionTypes } from './../actions/actionTypes';
 
 export const initialState = {
   data: null,
   loading: false,
   success: false,
-  error: false
+  error: false,
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.GEOLOCATION_START:
+    case actionTypes.FETCH_WEATHER_DATA_START:
       return {
         ...state,
-        loading: true
+        loading: true,
       };
-    case actionTypes.GEOLOCATION_SUCCESS:
+    case actionTypes.FETCH_WEATHER_DATA_SUCCESS:
+      localStorage.setItem('weather_data', JSON.stringify(action.data));
       return {
         ...state,
-        data: action.payload,
+        data: action.data,
         success: true,
-        loading: false
+        loading: false,
       };
-    case actionTypes.GEOLOCATION_ERROR:
+    case actionTypes.FETCH_WEATHER_DATA_ERROR:
       return {
         ...state,
         error: action.payload,
-        loading: false
+        loading: false,
       };
     default:
       return state;

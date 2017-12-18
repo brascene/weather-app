@@ -1,10 +1,10 @@
-import { actionTypes } from "./../actions/actionTypes";
+import { actionTypes } from './../actions/actionTypes';
 
 export const initialState = {
   locationData: null,
   loading: false,
   success: false,
-  error: {}
+  error: {},
 };
 
 export default (state = initialState, action) => {
@@ -12,24 +12,24 @@ export default (state = initialState, action) => {
     case actionTypes.GET_GEOLOCATION_DATA_START:
       return {
         ...state,
-        loading: true
-      }
+        loading: true,
+      };
     case actionTypes.GET_GEOLOCATION_DATA_SUCCESS:
-      localStorage.setItem("userLocation", JSON.stringify({
+      localStorage.setItem('userLocation', JSON.stringify({
         lat: action.payload.latitude,
-        lon: action.payload.longitude
-      }))
+        lon: action.payload.longitude,
+      }));
       return {
         ...state,
         locationData: action.payload,
         success: true,
-        loading: false
+        loading: false,
       };
     case actionTypes.GET_GEOLOCATION_DATA_ERROR:
       return {
         ...state,
         error: action.payload,
-        loading: false
+        loading: false,
       };
     default:
       return state;

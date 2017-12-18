@@ -1,27 +1,33 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Search from "../components/Search";
-import { weatherData } from "../redux/actions"
+import Search from '../components/Search';
+import { weatherData, weatherDataByCoord } from '../redux/actions';
 
-const mapDispatchToProps = (dispatch) => ({
-  ...bindActionCreators(weatherData, dispatch)
-})
+const mapDispatchToProps = dispatch => ({
+  ...bindActionCreators(Object.assign({}, weatherData, weatherDataByCoord), dispatch),
+});
 
-class SearchContainer extends Component {
+class SearchContainer extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <div>
-        <Search {...this.props} getWeatherData={this.props.weatherDataStart}  />
+        <Search
+          {...this.props}
+          getWeatherData={this.props.weatherDataStart}
+          getWeatherDataCoord={this.props.weatherDataCoordStart}
+        />
       </div>
     );
   }
 }
 
 SearchContainer.propTypes = {
-  getWeatherData: PropTypes.func
-}
+  getWeatherData: PropTypes.func.isRequired,
+  weatherDataStart: PropTypes.func.isRequired,
+  weatherDataCoordStart: PropTypes.func.isRequired,
+};
 
 export default connect(null, mapDispatchToProps)(SearchContainer);

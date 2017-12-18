@@ -1,1 +1,2 @@
-export * from "./LocationActions";
+export * from './LocationActions';
+export * from './WeatherActions';

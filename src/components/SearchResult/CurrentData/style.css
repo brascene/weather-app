@@ -1,0 +1,45 @@
+.currentDayIcon {
+  width: 50px;
+  height: 50px;
+}
+
+.currentDay {
+  width: 100%;
+  text-align: left;
+  padding-left: 40px;
+  padding-top: 50px;
+}
+
+.label {
+  font-size: 50px;
+}
+
+.currentDaySingle {
+  width: 220px;
+  height: 100%;
+  background-color: purple;
+  text-align: center;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.currentDaySingle1 {
+  width: 220px;
+  height: 220px;
+  background-color: purple;
+  margin-right: 20px;
+}
+
+.labelTemp {
+  height: 200px;
+  background-color: purple;
+  text-align: center;
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 100px;
+}
+
+.dayIcon {
+  width: 10px;
+  height: 10px;
+}
