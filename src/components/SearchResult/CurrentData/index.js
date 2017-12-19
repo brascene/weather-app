@@ -22,19 +22,19 @@ const CurrentData = (props) => {
         <Grid.Column only="computer" style={{ backgroundColor: 'white' }}>
           <List verticalAlign style={{ paddingTop: 50, color: '#dd8270' }}>
             <List.Item>
-              <List.Content floated="right">{temp.morn} </List.Content>
+              <List.Content floated="right">{temp.morn} {unit}</List.Content>
               <List.Content floated="left">Morning</List.Content>
             </List.Item>
             <List.Item>
-              <List.Content floated="right">{temp.day} </List.Content>
+              <List.Content floated="right">{temp.day} {unit}</List.Content>
               <List.Content floated="left">Day</List.Content>
             </List.Item>
             <List.Item>
-              <List.Content floated="right">{temp.eve} </List.Content>
+              <List.Content floated="right">{temp.eve} {unit}</List.Content>
               <List.Content floated="left">Evening</List.Content>
             </List.Item>
             <List.Item>
-              <List.Content floated="right">{temp.night} </List.Content>
+              <List.Content floated="right">{temp.night} {unit}</List.Content>
               <List.Content floated="left">Night</List.Content>
             </List.Item>
           </List>
