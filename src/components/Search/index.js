@@ -60,7 +60,11 @@ class Search extends React.Component {
 
   _handleSearchByCity = () => {
     const { city } = this.state;
-    this.props.getWeatherData(city);
+    if (city !== '') {
+      this.props.getWeatherData(city);
+    } else {
+      alert('Please provide the city name');
+    }
   };
 
   render() {
