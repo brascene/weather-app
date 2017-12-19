@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Label } from 'semantic-ui-react';
+import { Image, Label, Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import wIcons from '../../../assets/weather_icons';
 import { week } from '../../../utils';
@@ -12,11 +12,17 @@ const DayData = (props) => {
   const currentDay = dayDate.getUTCDay();
   const currentDayDisplay = week[currentDay];
   return (
-    <div className="singleDay">
-      <Label style={{ backgroundColor: 'yellow' }}>{currentDayDisplay}</Label>
-      <Image className="dayIcon" src={wIcons[iconCode]} size="tiny" />
-      <Label style={{ backgroundColor: 'yellow' }}>{temp} F</Label>
-    </div>
+    <Grid.Column centered>
+      <Grid.Row>
+        <Label style={{ backgroundColor: 'white' }}>{currentDayDisplay}</Label>
+      </Grid.Row>
+      <Grid.Row>
+        <Image className="dayIcon" src={wIcons[iconCode]} size="tiny" />
+      </Grid.Row>
+      <Grid.Row>
+        <Label style={{ backgroundColor: 'white' }}>{temp} F</Label>
+      </Grid.Row>
+    </Grid.Column>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Icon, Label, Checkbox } from 'semantic-ui-react';
+import { Button, Icon, Label, Checkbox, Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './style.css';
@@ -7,7 +7,6 @@ import './style.css';
 import SingleDay from './DayData';
 import CurrentDay from './CurrentData';
 import { week, month } from '../../utils';
-// import mockData from '../../mocks/weatherMock';
 
 class SearchResult extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
@@ -34,10 +33,11 @@ class SearchResult extends React.Component {
   };
 
   handleToogle = () => {
-    console.log('Changed again');
     const { celsius } = this.state;
     this.setState({ celsius: !celsius });
   };
+
+  fistLetterCapital = word => word.charAt(0).toUpperCase() + word.slice(1);
 
   render() {
     const weatherData =
@@ -47,41 +47,58 @@ class SearchResult extends React.Component {
     const title = this.getTitle(weatherData);
     const { celsius } = this.state;
     return (
-      <div id="container">
-        <div id="left" />
-        <div id="center">
-          <div style={{ height: 90 }} />
-          <div className="search-container">
-            <div style={{ height: 50 }}>
-              <Button
-                onClick={() => {
-                  this.props.history.goBack();
-                }}
-                icon
-                labelPosition="left"
-              >
-                Back
-                <Icon name="left arrow" />
-              </Button>
-              <Label>{weatherData.city.name}</Label>
-            </div>
-            <div style={{ height: 30 }}>
-              <Label style={{ fontSize: 30 }}>{title}</Label>
-              <Checkbox
-                onChange={this.handleToogle}
-                style={{ marginLeft: 100, marginTop: 30 }}
-                toggle
-              />
-              <Label>Switch °F / °C</Label>
-            </div>
-            <div style={{ height: 260, paddingTop: 50 }}>
-              <CurrentDay
-                celsius={celsius}
-                iconCode={weatherData.list[0].weather[0].icon}
-                temp={weatherData.list[0].temp}
-              />
-            </div>
-            <div style={{ height: 260, paddingTop: 120 }}>
+      <div
+        className="ui container center"
+        style={{ width: '70%', paddingTop: 70 }}
+      >
+        <div className="search-container">
+          <div style={{ width: '100%' }}>
+            <Grid>
+              <Grid.Column floated="left">
+                <Button
+                  style={{ backgroundColor: 'white', fontSize: 25 }}
+                  onClick={() => {
+                    this.props.history.goBack();
+                  }}
+                  icon
+                  labelPosition="left"
+                >
+                  {weatherData.city.name}
+                  <Icon name="left arrow" className="backIcon" />
+                </Button>
+              </Grid.Column>
+              <Grid.Column width={4} floated="right">
+                <Label className="switchLabel" style={{ backgroundColor: "white", marginTop: 20 }}>Switch (°C) - (°F)</Label>
+                <Checkbox
+                  className="checkbox"
+                  onChange={this.handleToogle}
+                  toggle
+                  style={{ paddingTop: 0 }}
+                />
+              </Grid.Column>
+            </Grid>
+          </div>
+
+          <div className="containerLeftTitle">
+            <Label style={{ fontSize: 30, fontWeight: 'light', backgroundColor: 'white' }}>{title}</Label> <br />
+            <Label style={{ fontSize: 25, backgroundColor: 'white' }}>
+              {this.fistLetterCapital(weatherData.list[0].weather[0].description)}
+            </Label>
+          </div>
+
+          <div style={{ height: 260, paddingTop: 0, paddingLeft: 70 }}>
+            <CurrentDay
+              celsius={celsius}
+              iconCode={weatherData.list[0].weather[0].icon}
+              temp={weatherData.list[0].temp}
+            />
+          </div>
+
+          <div
+            className="ui container center"
+            style={{ width: '100%', paddingLeft: 30, paddingTop: 0 }}
+          >
+            <Grid container columns={7} centered doubling>
               {weatherData.list.map(m => (
                 <SingleDay
                   key={m.dt}
@@ -90,10 +107,10 @@ class SearchResult extends React.Component {
                   temp={m.temp.day}
                 />
               ))}
-            </div>
+            </Grid>
+            <div style={{ height: 50 }} />
           </div>
         </div>
-        <div id="right" />
       </div>
     );
   }

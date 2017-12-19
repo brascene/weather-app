@@ -66,50 +66,45 @@ class Search extends React.Component {
   render() {
     const { getMyLocationLoader } = this.state;
     return (
-      <div id="container">
-        <div id="left" />
-        <div id="center">
-          <div style={{ height: 90 }} />
-          <div className="search-container">
-            <div style={{ height: 260 }} />
-            <Input
-              className="search"
-              style={{ width: '70%', minWidth: 300 }}
-              icon="search"
-              placeholder="Enter the city name visea"
-              size="big"
-              onChange={e => this.setState({ city: e.target.value })}
-            />
-            <br />
-            <br />
-            <Button
-              onClick={this._handleSearchByCity}
-              className="goButton"
-              content="Go"
-            />
-            <div style={{ height: 260 }}>
-              <Label
-                style={{
+      <div className="ui container center" style={{ width: '80%', paddingTop: 70 }}>
+        <div className="search-container center">
+          <div style={{ height: 260 }} />
+          <Input
+            className="search"
+            style={{ width: '70%', minWidth: 300 }}
+            icon="search"
+            placeholder="Enter the city name visea"
+            size="big"
+            onChange={e => this.setState({ city: e.target.value })}
+          />
+          <br />
+          <br />
+          <Button
+            onClick={this._handleSearchByCity}
+            className="goButton"
+            content="Go"
+          />
+          <div style={{ height: 260 }}>
+            <Label
+              style={{
                   backgroundColor: 'white',
                   fontSize: 16,
                   fontWeight: '200',
                 }}
-              >
+            >
                 or
-              </Label>{' '}
-              <br />
-              <Button
-                style={{ backgroundColor: 'white' }}
-                loading={getMyLocationLoader}
-                content="use my current location"
-                onClick={this._handleGetMyLocation}
-                basic
-                color="purple"
-              />
-            </div>
+            </Label>{' '}
+            <br />
+            <Button
+              style={{ backgroundColor: 'white' }}
+              loading={getMyLocationLoader}
+              content="use my current location"
+              onClick={this._handleGetMyLocation}
+              basic
+              color="purple"
+            />
           </div>
         </div>
-        <div id="right" />
       </div>
     );
   }

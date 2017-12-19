@@ -1,7 +1,7 @@
 .singleDay {
   width: 100px;
   height: 130px;
-  background-color: green;
+  background-color: white;
   text-align: center;
   display: inline-block;
   margin-right: 20px;
@@ -10,5 +10,6 @@
 .dayIcon {
   width: 20px;
   height: 20px;
-  margin-left: 10px;
+  margin-left: 0px;
+  color: #94d;
 }

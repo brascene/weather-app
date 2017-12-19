@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import Routes from "./routes";
+import Routes from './routes';
 
-class App extends Component {
+class App extends Component { // eslint-disable-line react/prefer-stateless-function
   render() {
     return <Routes />;
   }

@@ -101,3 +101,14 @@ export const fahrenheitToCelsius = value => round((5 * ((value - 32) / 9)), 2);
 export const celsiusToFahrenheit = value => round(((1.8 * value) + 32), 2);
 export const kelvinToFahrenheit = value => round((((value * 9) / 5) - 459.67), 2);
 export const kelvinToCelsius = value => round((value - 273.15), 2);
+
+// round temps
+// const rList = list.map(m => { 
+  // return Object.assign({}, m, 
+  //   { temp: 
+  //     { day: parseInt(m.temp.day),
+  //        min: parseInt(m.temp.min),
+  //        max: parseInt(m.temp.max),
+  //        night: parseInt(m.temp.night),
+  //        eve: parseInt(m.temp.eve),
+  //        morn: parseInt(m.temp.morn) } }) })
