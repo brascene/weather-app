@@ -6,14 +6,14 @@ import wIcons from '../../../assets/weather_icons';
 import './style.css';
 
 const CurrentData = (props) => {
-  const { temp, iconCode } = props;
-
+  const { temp, iconCode, celsius } = props;
+  const unit = !celsius ? '°C ' : '°F';
   return (
     <div className="leftContainer" style={{ width: '70%' }}>
       <Grid columns="equal">
         <Grid.Column only="computer" width={8}>
           <List style={{ paddingTop: 80, color: '#dd8270', fontSize: 100 }}>
-            <List.Content>{temp.day} F </List.Content>
+            <List.Content>{temp.day} {unit}</List.Content>
           </List>
         </Grid.Column>
         <Grid.Column>
@@ -47,6 +47,7 @@ const CurrentData = (props) => {
 CurrentData.propTypes = {
   temp: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types,
   iconCode: PropTypes.string.isRequired,
+  celsius: PropTypes.bool.isRequired,
 };
 
 export default CurrentData;

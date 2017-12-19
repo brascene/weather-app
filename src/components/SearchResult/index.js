@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import './style.css';
 
+import { toggleTemperature, reloadData } from '../../redux/actions';
+
 import SingleDay from './DayData';
 import CurrentDay from './CurrentData';
 import { week, month } from '../../utils';
@@ -18,6 +20,7 @@ class SearchResult extends React.Component {
     const savedData = localStorage.getItem('weather_data');
     const savedJson = JSON.parse(savedData);
     if (savedJson !== {} && this.props.weatherData === null) {
+      this.props.reloadData(savedJson);
       this.setState({ savedData: savedJson });
     }
   }
@@ -34,6 +37,7 @@ class SearchResult extends React.Component {
 
   handleToogle = () => {
     const { celsius } = this.state;
+    this.props.toggleTemperature(!celsius);
     this.setState({ celsius: !celsius });
   };
 
@@ -68,7 +72,7 @@ class SearchResult extends React.Component {
                 </Button>
               </Grid.Column>
               <Grid.Column width={4} floated="right">
-                <Label className="switchLabel" style={{ backgroundColor: "white", marginTop: 20 }}>Switch (°C) - (°F)</Label>
+                <Label className="switchLabel" style={{ backgroundColor: 'white', marginTop: 20 }}>Switch (°C) - (°F)</Label>
                 <Checkbox
                   className="checkbox"
                   onChange={this.handleToogle}
@@ -101,6 +105,7 @@ class SearchResult extends React.Component {
             <Grid container columns={7} centered doubling>
               {weatherData.list.map(m => (
                 <SingleDay
+                  celsius={celsius}
                   key={m.dt}
                   day={m.dt}
                   iconCode={m.weather[0].icon}
@@ -117,8 +122,10 @@ class SearchResult extends React.Component {
 }
 
 SearchResult.propTypes = {
-  weatherData: PropTypes.object,
-  history: PropTypes.object.isRequired,
+  weatherData: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  toggleTemperature: PropTypes.func.isRequired,
+  reloadData: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -127,4 +134,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(SearchResult);
+export default connect(mapStateToProps, { toggleTemperature, reloadData })(SearchResult);

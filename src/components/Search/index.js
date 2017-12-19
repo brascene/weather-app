@@ -100,8 +100,7 @@ class Search extends React.Component {
               loading={getMyLocationLoader}
               content="use my current location"
               onClick={this._handleGetMyLocation}
-              basic
-              color="purple"
+              color="white"
             />
           </div>
         </div>
@@ -122,7 +121,7 @@ Search.propTypes = {
   getCurrentLocationStart: PropTypes.func.isRequired,
   getCurrentLocationSuccess: PropTypes.func.isRequired,
   getWeatherData: PropTypes.func.isRequired,
-  weatherData: PropTypes.object,
+  weatherData: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   getWeatherDataCoord: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
 };

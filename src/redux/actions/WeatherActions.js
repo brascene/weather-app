@@ -32,5 +32,11 @@ export const weatherDataByCoord = {
 
 export const toggleTemperature = celsius => ({
   type: actionTypes.TOGGLE_TEMPERATURE_UNIT,
-  celsius,
+  payload: celsius,
 });
+
+export const reloadData = data => ({
+  type: actionTypes.RELOAD_DATA,
+  payload: data,
+});
+

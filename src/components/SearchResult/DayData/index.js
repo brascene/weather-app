@@ -7,10 +7,16 @@ import { week } from '../../../utils';
 import './style.css';
 
 const DayData = (props) => {
-  const { day, iconCode, temp } = props;
+  const {
+    day,
+    iconCode,
+    temp,
+    celsius,
+  } = props;
   const dayDate = new Date(day * 1000);
   const currentDay = dayDate.getUTCDay();
   const currentDayDisplay = week[currentDay];
+  const unit = !celsius ? '°C ' : '°F';
   return (
     <Grid.Column centered>
       <Grid.Row>
@@ -20,7 +26,7 @@ const DayData = (props) => {
         <Image className="dayIcon" src={wIcons[iconCode]} size="tiny" />
       </Grid.Row>
       <Grid.Row>
-        <Label style={{ backgroundColor: 'white' }}>{temp} F</Label>
+        <Label style={{ backgroundColor: 'white' }}>{temp} {unit}</Label>
       </Grid.Row>
     </Grid.Column>
   );
@@ -30,6 +36,7 @@ DayData.propTypes = {
   day: PropTypes.number.isRequired,
   iconCode: PropTypes.string.isRequired,
   temp: PropTypes.number.isRequired,
+  celsius: PropTypes.bool.isRequired,
 };
 
 export default DayData;
