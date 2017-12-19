@@ -12,7 +12,7 @@ const CurrentData = (props) => {
     <div className="leftContainer" style={{ width: '70%' }}>
       <Grid columns="equal">
         <Grid.Column only="computer" width={8}>
-          <List style={{ paddingTop: 80, color: '#dd8270', fontSize: 100 }}>
+          <List style={{ paddingTop: 80, color: '#dd8270', fontSize: 90 }}>
             <List.Content>{temp.day} {unit}</List.Content>
           </List>
         </Grid.Column>
