@@ -77,7 +77,7 @@ class Search extends React.Component {
             className="search"
             style={{ width: '70%', minWidth: 300 }}
             icon="search"
-            placeholder="Enter the city name visea"
+            placeholder="Enter the city name "
             size="big"
             onChange={e => this.setState({ city: e.target.value })}
           />
